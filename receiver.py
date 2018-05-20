@@ -1,13 +1,12 @@
 #!/usr/bin/python
 
 import socket
+x=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+x.bind(("127.0.0.1",9999))
 
-rec_ip="192.168.42.108"
-myport=9999
-
-s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-
-s.bind((rec_ip,myport))
-
-while True:
-	s.recvfrom(1000)
+while 1+1:
+	data=x.recvfrom(1000)
+	print "data from client : ",data[0]
+	rply=raw_input("Please reply - ")
+	x.sendto(rply, data[1])
+j
